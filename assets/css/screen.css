@@ -1,0 +1,40 @@
+.text_container_l {
+margin-left:30px;
+min-width: 200px;
+float:left;
+}
+.text_container_r {
+width: 400px;
+float:left;
+margin:0 0 0 200px;
+}
+.text_l {
+float:left;
+margin:0 0 0 -220px;
+min-width: 220px;
+}
+.text_r {
+float:left;
+}
+.multiline {
+  white-space:pre;
+}
+.links {
+  clear:both;
+}
+body {
+    margin-left:30px;
+    background-image:url(http://framebox.org/static/images/cell10x10.gif);
+    font-size: 16px;
+}
+hr.style-one {
+    background: #333 linear-gradient(to right, #ccc, #333, #ccc) repeat scroll 0 0;
+    border: 0 none;
+    height: 1px;
+}
+#myrow{
+    height:30px;
+}
+.myform-field {
+    width:100%;
+}

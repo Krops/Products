@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Product: {{object.name}}{% endblock %}
+{% block content %}
+<section>
+<p><a href="{% url 'category' object.category.slug %}">Back to category</a></p>
+<p>Product: {{ object.name }}</p>
+<div>Price: {{ object.price }}</div>
+<div>Description: {{ object.description }}</div>
+</section>
+{% endblock %}

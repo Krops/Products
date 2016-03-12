@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=IE7"/>
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    
+    {% block extra_head %}{% endblock extra_head %}
+
+</head>
+<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+             aria-hidden="true" data-refresh='true'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                </div>
+            </div>
+    </div>
+{% if user.username %}
+        <button id="authbut" type="button" class="btn btn-default" href="{% url 'logout' %}" data-toggle="modal" data-target="#modal" title="Logout" data-tooltip class="logform">Logout</button>
+            <div id="logtit">Login as: {{ user.username }}</div>
+{% else %}
+    <button id="authbut" type="button" class="btn btn-default" href="{% url 'login' %}" data-toggle="modal" data-target="#modal" title="Login" data-tooltip class="fa fa-pencil">Login</button>
+    <div id="logtit">Login as: Anon</div>
+{% endif %}
+{% block content %}{% endblock content %}
+</body>
+</html>

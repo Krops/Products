@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<script src="{% static 'js/edit.js' %}"></script>
+<div class="modal-content" id='last_content'>
+<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="lastModalLabel">Last Products</h4>
+</div>
+<div class="modal-body">
+<div class="form-group" id='lastu'>
+{% for p in object_list %}
+<div><a href="{% url 'product' p.category p.slug %}">{{ p.name }}</a> {{p.price}} {{p.description}}</div>
+{% endfor %}
+</div>
+</div>
+<div class="modal-footer" style="clear:both">
+<input type="button" class="btn btn-default" data-dismiss="modal" value="Ok"/>
+</div>
+</div>
