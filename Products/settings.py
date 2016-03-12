@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'Products.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bazochka',
-        'USER': 'pkrop',
-        'PASSWORD': '11JU92',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'krop$default',
+        'USER': 'krop',
+        'PASSWORD': '11June1992',
+        'HOST': 'krop.mysql.pythonanywhere-services.com',
         'PORT': '',
     }
 }
@@ -124,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/home/krop/Products/assets'
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
