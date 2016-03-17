@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load prices %}
 <script src="{% static 'js/edit.js' %}"></script>
 <div class="modal-content" id='last_content'>
 <div class="modal-header">
@@ -8,7 +9,8 @@
 <div class="modal-body">
 <div class="form-group" id='lastu'>
 {% for p in object_list %}
-<div><a href="{% url 'product' p.category p.slug %}">{{ p.name }}</a> {{p.price}} {{p.description}}</div>
+<div><a href="{% url 'product' p.category.slug p.slug %}">{{ p.name }}</a>
+Price: {% gross p.price %} {{p.description}}</div>
 {% endfor %}
 </div>
 </div>

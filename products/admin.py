@@ -1,8 +1,8 @@
 from django.contrib import admin
-from products.models import product, category
+from products.models import Product, Category
 
 
-class productAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     fieldsets = [
         ('name', {'fields': ['name']}),
         ('slug', {'fields': ['slug']}),
@@ -14,7 +14,7 @@ class productAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
-class categoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     fieldsets = [
         ('name', {'fields': ['name']}),
         ('slug', {'fields': ['slug']}),
@@ -25,5 +25,5 @@ class categoryAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
-admin.site.register(category, categoryAdmin)
-admin.site.register(product, productAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product, ProductAdmin)
