@@ -13,5 +13,6 @@ build
 .noseids
 media
 static
+__pycache__
 *.dat
 .env
