@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic.edit import FormView
 from products.forms import LoginForm
 from products.utils import render_to_json_response
-from products.models import product, category
+from products.models import Product, Category
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -18,37 +18,37 @@ class CategoryView(ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return category.objects.all()
+        return Category.objects.all()
 
 
 class CategoryDetailView(DetailView):
     template_name = 'products/category.html'
-    model = category
+    model = Category
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetailView, self).get_context_data(**kwargs)
-        categ = get_object_or_404(category, slug__iexact=self.kwargs['slug'])
-        context['products'] = product.objects.all().filter(category=categ)
+        categ = get_object_or_404(Category, slug__iexact=self.kwargs['slug'])
+        context['products'] = Product.objects.all().filter(category=categ)
         context['slug'] = self.kwargs['slug']
         return context
 
 
 class ProductView(DetailView):
     template_name = 'products/product.html'
-    model = product
+    model = Product
 
     def get_object(self):
-        return get_object_or_404(product, slug__iexact=self.kwargs['pslug'])
+        return get_object_or_404(Product, slug__iexact=self.kwargs['pslug'])
 
 
 class LastProductsView(ListView):
     template_name = 'products/last.html'
-    model = product
+    model = Product
 
     def get_queryset(self):
         current_time = timezone.now()
         day_ago = current_time - timezone.timedelta(hours=24)
-        return product.objects.filter(created_at__gt=day_ago)
+        return Product.objects.filter(created_at__gt=day_ago)
 
 
 class LoginView(FormView):

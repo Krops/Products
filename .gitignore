@@ -12,6 +12,7 @@ git_ignore
 build
 .noseids
 media
+__pycache__
 static
 __pycache__
 *.dat

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load prices %}
 {% block title %}Category: {{object.name}}{% endblock %}
 {% block content %}
 <section>
@@ -6,7 +7,8 @@
 <p>Category: {{object.name}}</p>
 <p>Description: {{object.description}}</p>
 {% for p in products %}
-<div><a href="{% url 'product' slug p.slug %}">{{ p.name }}</a> {{p.price}}</div>
+<div><a href="{% url 'product' slug p.slug %}">{{ p.name }}</a> 
+{% gross p.price %}</div>
 {% endfor %}
 </section>
 {% endblock %}

@@ -1,14 +1,15 @@
 from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from django_prices.models import PriceField
 import datetime
 
 
-class product(models.Model):
+class Product(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     description = models.TextField()
-    price = models.FloatField(default=0.0)
+    price = PriceField('Price', currency='USD', max_digits=9, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey('category', on_delete=models.CASCADE,)
@@ -28,7 +29,7 @@ class product(models.Model):
         return reverse('product', args=[str(self.slug)])
 
 
-class category(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     description = models.TextField()
