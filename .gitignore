@@ -14,5 +14,6 @@ build
 media
 __pycache__
 static
+__pycache__
 *.dat
 .env
